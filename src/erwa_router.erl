@@ -260,7 +260,7 @@ handle_info({erwa,{invocation,RequestId,RpcId,_Details,Arguments,_ArgumentsKw}},
     case proplists:get_value(RpcId, InternalRpcMap) of
       undefined ->
         %% this should never happen.
-        lager:error("Unexpected state, called an undefined router-side RPC"),
+        io:format("~nerror: Unexpected state, called an undefined router-side RPC"),
         ok = internal_error(State,RequestId, undefined, undefined, no_such_procedure),
         State;
       Fun ->
